@@ -79,7 +79,7 @@ function backgroundChange() {
   const blue = Math.floor(Math.random() * 255)
 
   document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-  document.body.style.transition = `0.8s`;
+  document.body.style.transition = `0.5s`;
 }
 
 /***
@@ -99,6 +99,8 @@ function printQuote() {
   `;
 
   // If the certain properties are in the object, concatnate it to the quoteHTMl and close the p element from quoteHTML. Lastly, perform background change function
+  quote ? console.log(quote) : '$10.00';
+
   if ('citation' in quoteObject && 'year' in quoteObject) {
     quoteHTML += `
     <span class="citation">${citation}</span><span class="year">${year}</span></p>
@@ -116,10 +118,10 @@ function printQuote() {
   return document.getElementById('quote-box').innerHTML = quoteHTML;
 }
 
-// Set an interval timmer to change to a quote every 3 seconds
+// Set an interval timmer to change to a quote every 6 seconds
 setInterval(function () {
   printQuote()
-}, 3000);
+}, 6000);
 
 
 /***
