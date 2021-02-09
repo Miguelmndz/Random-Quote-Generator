@@ -25,36 +25,34 @@ const quotes = [
   {
     quote: "Your time is limited so don't waste it living someone else's life.",
     source: "Steve Jobs"
-  }, 
-  {
+  }, {
     quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
     source: "Walt Disney"
-  }, 
-  {
+  }, {
     quote: "Life is what happens when you're busy making other plans.",
     source: "John Lennon"
-  }, 
-  {
+  }, {
     quote: "The way to get started is to quit talking and begin doing.",
-    source: "Nelson Mandela"
-  }, 
-  {
+    source: "Nelson Mandela",
+    tag: "Motivation"
+  }, {
     quote: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.",
     source: "Harry Burns",
     citation: "When Harry Met Sally",
-    year: "1989"
-  }, 
-  {
+    year: "1989",
+    tag: "Motivation"
+  }, {
     quote: "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
     source: "Dead Poets",
     citation: "Society",
-    year: "1989"
-  }, 
-  {
+    year: "1989",
+    tag: "Motivation"
+  }, {
     quote: "My mama always said life was like a box of chocolates. You never know what you're gonna get.",
     source: "Forrest Gump",
     citation: "Forrest Gump",
-    year: "1994"
+    year: "1994",
+    tag: "Motivation"
   }
 ];
 
@@ -92,29 +90,25 @@ function printQuote() {
   const source = quoteObject.source
   const citation = quoteObject.citation;
   const year = quoteObject.year;
+  const tag = quoteObject.tag;
 
   let quoteHTML = `
     <p class="quote">${quote}</p>
-    <p class="source">${source}
-  `;
+    <p class="source">${source}`;
 
   // If the certain properties are in the object, concatnate it to the quoteHTMl and close the p element from quoteHTML. Lastly, perform background change function
-  quote ? console.log(quote) : '$10.00';
 
-  if ('citation' in quoteObject && 'year' in quoteObject) {
-    quoteHTML += `
-    <span class="citation">${citation}</span><span class="year">${year}</span></p>
-    `;
-  } else if ('citation' in quoteObject) {
-    quoteHTML += `
-    <span class="citation">${citation}</span></p>
-    `;
-  } else if ('year' in quoteObject) {
-    quoteHTML += `
-    <span class="year">${year}</span></p>`;
-  } else {
-    quoteHTML += `</p>`
-  } backgroundChange()
+  if ('citation' in quoteObject) {
+    quoteHTML += `<span class="citation">${citation}</span>`;
+  }
+  if ('year' in quoteObject) {
+    quoteHTML += `<span class="year">${year}</span>`;
+  }
+  if ('tag' in quoteObject) {
+    quoteHTML += `<span class="tag"> ${tag}</span>`;
+  }
+  quoteHTML += `</p>`
+  backgroundChange()
   return document.getElementById('quote-box').innerHTML = quoteHTML;
 }
 

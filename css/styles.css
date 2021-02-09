@@ -110,7 +110,7 @@ h1 {
   font-style: normal;
 }
 
-.year:before {
+.year:before, .tag:before {
   content: ", ";
   font-style: normal;
 }
@@ -160,7 +160,7 @@ h1 {
     bottom: 0.1em;
   }
 
-  .source {
+  .source{
     font-size: 1.25rem;
   }
 }
