@@ -12,41 +12,80 @@ const quotes = [
   {
     quote: "Make things as simple as possible, but not simpler.",
     source: "Albert Einstein",
-    year: "9999"
+    year: "1933"
   },
   {
     quote: "If you cant explain it simply, you dont understand it well enough.",
-    source: "Albert Einstein",
+    source: "Albert Einstein"
   },
   {
     quote: "Live as if you were to die tomorrow. Learn as if you were to live forever.",
-    source: "Mahatma Gandhi",
+    source: "Mahatma Gandhi"
   },
   {
     quote: "Your time is limited so don't waste it living someone else's life.",
-    source: "Steve Jobs",
-  },
+    source: "Steve Jobs"
+  }, 
+  {
+    quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+    source: "Walt Disney"
+  }, 
+  {
+    quote: "Life is what happens when you're busy making other plans.",
+    source: "John Lennon"
+  }, 
+  {
+    quote: "The way to get started is to quit talking and begin doing.",
+    source: "Nelson Mandela"
+  }, 
   {
     quote: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.",
     source: "Harry Burns",
     citation: "When Harry Met Sally",
     year: "1989"
-  },
+  }, 
+  {
+    quote: "Carpe diem. Seize the day, boys. Make your lives extraordinary.",
+    source: "Dead Poets",
+    citation: "Society",
+    year: "1989"
+  }, 
+  {
+    quote: "My mama always said life was like a box of chocolates. You never know what you're gonna get.",
+    source: "Forrest Gump",
+    citation: "Forrest Gump",
+    year: "1994"
+  }
 ];
-
 
 /***
  * `getRandomQuote` function
 ***/
+
 // Accepts an array, returns a random object from the array
 function getRandomQuote(arr) {
-  const randomNumber = Math.floor(Math.random() * arr.length) 
+  const randomNumber = Math.floor(Math.random() * arr.length)
   return arr[randomNumber];
 }
+
+/***
+ * `backgroundChange` function
+***/
+
+// Picks a random rgb color to change the background and adds a transiton
+function backgroundChange() {
+  const red = Math.floor(Math.random() * 255)
+  const green = Math.floor(Math.random() * 255)
+  const blue = Math.floor(Math.random() * 255)
+
+  document.body.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+  document.body.style.transition = `0.8s`;
+}
+
 /***
  * `printQuote` function
 ***/
-// Uses getRandomQoute function to store the random object 
+// Uses getRandomQoute function to store the random object get it's contents through dot notaion and stores it in html syntax
 function printQuote() {
   const quoteObject = getRandomQuote(quotes);
   const quote = quoteObject.quote;
@@ -55,12 +94,12 @@ function printQuote() {
   const year = quoteObject.year;
 
   let quoteHTML = `
-    <p class="quote">"${quote}"</p>
+    <p class="quote">${quote}</p>
     <p class="source">${source}
   `;
 
-  // If the property 'citation' is in the object concatnate it to the quoteHTMl and close the p element from quoteHTML
-  if ( 'citation' in quoteObject && 'year' in quoteObject){
+  // If the certain properties are in the object, concatnate it to the quoteHTMl and close the p element from quoteHTML. Lastly, perform background change function
+  if ('citation' in quoteObject && 'year' in quoteObject) {
     quoteHTML += `
     <span class="citation">${citation}</span><span class="year">${year}</span></p>
     `;
@@ -70,14 +109,17 @@ function printQuote() {
     `;
   } else if ('year' in quoteObject) {
     quoteHTML += `
-    <span class="year">${year}</span></p>`
-    ;
+    <span class="year">${year}</span></p>`;
   } else {
     quoteHTML += `</p>`
-  }
-
-  return document.getElementById('quote-box').innerHTML = quoteHTML; 
+  } backgroundChange()
+  return document.getElementById('quote-box').innerHTML = quoteHTML;
 }
+
+// Set an interval timmer to change to a quote every 3 seconds
+setInterval(function () {
+  printQuote()
+}, 3000);
 
 
 /***
