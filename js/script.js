@@ -11,6 +11,40 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 
+// List of objects containing quotes, source = name, citation = where it was from, and year = year published
+const quotes = [
+  {
+    quote: "Make things as simple as possible, but not simpler.",
+    source: "Albert Einstein",
+    citation: "",
+    year: ""
+  },
+  {
+    quote: "If you cant explain it simply, you dont understand it well enough.",
+    source: "Albert Einstein",
+    citation: "",
+    year: ""
+  },
+  {
+    quote: "Live as if you were to die tomorrow. Learn as if you were to live forever.",
+    source: "Mahatma Gandhi",
+    citation: "",
+    year: ""
+  },
+  {
+    quote: "Your time is limited so don't waste it living someone else's life.",
+    source: "Steve Jobs",
+    citation: "",
+    year: ""
+  },
+  {
+    quote: "When you realize you want to spend the rest of your life with somebody, you want the rest of your life to start as soon as possible.",
+    source: "Steve Jobs",
+    citation: "When Harry Met Sally",
+    year: "1989"
+  },
+];
+
 
 
 /***
